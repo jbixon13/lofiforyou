@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
+var SunCalc = require('suncalc');
+
 function GetClientInfo() {
     const [time, setTime] = useState(new Date());
     const [{lat, lng}, setLocation] = useState({lat: 0, lng: 0});
+
+    const sunTimes = SunCalc.getTimes(time, lat, lng);
+    console.log(sunTimes)
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,8 +35,8 @@ function GetClientInfo() {
         <div>
             <p>The user's current time is: {time.toLocaleTimeString()}</p>
             <p>The user's location is: {[lat, lng]}</p>
-            <p>The sunrise time at the user's location is:</p>
-            <p>The sunset time at the user's location is:</p>
+            <p>The sunrise time at the user's location is: {sunTimes.sunrise.toLocaleTimeString()}</p>
+            <p>The sunset time at the user's location is: {sunTimes.sunset.toLocaleTimeString()}</p>
         </div>
     )
 }
