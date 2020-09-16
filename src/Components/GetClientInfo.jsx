@@ -6,9 +6,6 @@ function GetClientInfo() {
     const [time, setTime] = useState(new Date());
     const [{lat, lng}, setLocation] = useState({lat: 0, lng: 0});
 
-    const sunTimes = SunCalc.getTimes(time, lat, lng);
-    console.log(sunTimes)
-
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(new Date());
@@ -30,6 +27,8 @@ function GetClientInfo() {
             });
         }
     }, [lat, lng]);
+
+    const sunTimes = SunCalc.getTimes(time, lat, lng);
 
     return(
         <div>
