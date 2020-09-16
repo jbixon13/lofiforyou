@@ -1,5 +1,6 @@
 import React from 'react'
 import YoutubeControls from './Components/YoutubeControls'
+import GetClientInfo from './Components/GetClientInfo'
 import LofiCanvas from './Components/LofiCanvas'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <h1>Lofi For You</h1>
       <YoutubeControls />
+      <GetClientInfo />
       <LofiCanvas />
     </div>
   );
