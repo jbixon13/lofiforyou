@@ -12,20 +12,19 @@ const Plane = () => (
 const Box = () => (
     <mesh castShadow>
         <boxBufferGeometry attach='geometry' args={[5, 5, 5]} />
-        <meshBasicMaterial attach='material' color='black' />
+        <meshPhysicalMaterial attach='material' color='gray' />
     </mesh>
 )
 
 function LofiCanvas() {
     return(
-        <Canvas shadowMap camera={{ position: [0, 10, 15] }}>
-            <OrbitControls />
+        <Canvas colorManagement shadowMap camera={{ position: [0, 10, 15] }}>
+            <OrbitControls autoRotate={true} />
             <Box />
             <Plane />
             <ambientLight />
-            <spotLight
+            <pointLight
                 castShadow
-                penumbra={1}
                 position={[0, 5, 10]}
             />
             <Sky />
