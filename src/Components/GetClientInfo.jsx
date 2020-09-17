@@ -38,7 +38,6 @@ function GetClientInfo() {
             try {
                 const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API}&q=${lat},${lng}`)
                 const json = await response.json();
-                console.log(json.current.condition.text);
                 setWeather(json.current.condition.text);
             } catch (error) {
                 console.log('Weather API call failed');
