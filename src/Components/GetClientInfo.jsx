@@ -9,11 +9,11 @@ function GetClientInfo() {
     const [{lat, lng}, setLocation] = useState({lat: 0, lng: 0});
     const [weather, setWeather] = useState([]);
 
-    // get local time of client on set interval (every minute)
+    // get local time of client on set interval (every 10 minutes)
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(new Date());
-        }, 60000);
+        }, 600000);
         return () => clearInterval(interval);
     }, [time]);
 
@@ -44,7 +44,7 @@ function GetClientInfo() {
             }
         }
         fetchData();
-    }, [lat, lng])
+    }, [lat, lng, time])
 
     // get sun calculations based on prior functions
     const sunTimes = SunCalc.getTimes(time, lat, lng);
