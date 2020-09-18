@@ -1,33 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Canvas } from 'react-three-fiber'
-import { OrbitControls, Sky } from 'drei'
+import { OrbitControls, Sky, Stars } from 'drei'
+// import { BoxHelper } from 'three'
+
 
 const Plane = () => (
-    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.5, 0]}>
+    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
         <planeBufferGeometry attach='geometry' args={[100, 100]} />
         <meshPhysicalMaterial attach='material' color='pink' />
     </mesh>
 )
 
 const Box = () => (
-    <mesh castShadow>
+    <mesh castShadow position={[0, 2.5, 0]}>
         <boxBufferGeometry attach='geometry' args={[5, 5, 5]} />
         <meshPhysicalMaterial attach='material' color='gray' />
     </mesh>
 )
 
+const Skybox = ({isDay}) => {
+
+    if (isDay) {
+        return <Sky />
+    }
+
+    return <Stars />
+}
+
 function LofiCanvas() {
+    const [isDay, setIsDay] = useState(true);
+
+    // maybe bring in times and do useEffect to setIsDay
+    // maybe move isDay to GetClientInfo and read in as prop to LofiCanvas
+
     return(
-        <Canvas colorManagement shadowMap camera={{ position: [0, 10, 15] }}>
+        <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 10, 15] }}>
             <OrbitControls autoRotate={true} />
             <Box />
             <Plane />
             <ambientLight />
             <pointLight
                 castShadow
-                position={[0, 5, 10]}
+                position={[5, 5, 10]}
+                distance={50}
             />
-            <Sky />
+            <Skybox isDay={isDay}/>
+            <gridHelper args={[30, 30, 30]} />
         </Canvas>
     )
 }

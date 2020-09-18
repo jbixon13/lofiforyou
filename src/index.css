@@ -18,3 +18,11 @@ Canvas {
   margin: 0;
   padding: 0;
 }
+
+div .day {
+  background: white;
+}
+
+div .night {
+  background: #272730;
+}
