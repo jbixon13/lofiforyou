@@ -9,56 +9,66 @@ const WEATHER_API = process.env.REACT_APP_WEATHER_API
 
 function App() {
   const [time, setTime] = useState(new Date());
+  const [isDay, setIsDay] = useState(true);
   const [{lat, lng}, setLocation] = useState({lat: 0, lng: 0});
   const [weather, setWeather] = useState([]);
-  const [isDay, setIsDay] = useState(true);
 
-    // get local time of client on set interval (every 10 minutes)
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setTime(new Date());
-      }, 600000);
-      return () => clearInterval(interval);
-    }, [time]);
+  // get sun calculations based on date & location
+  const sunTimes = SunCalc.getTimes(time, lat, lng);
 
-    // get location of client to determine local sun calculations & weather
-    useEffect(() => {
-      if(navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            setLocation({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            });
-          }, 
-          (err) => {
-            console.log('Error getting location');
+  // get local time of client on set interval (every 10 minutes)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 600000);
+    return () => clearInterval(interval);
+  }, [time]);
+
+  // get day/night indicator for use in Skybox
+  useEffect(() => {
+    if(time > sunTimes.sunrise && time < sunTimes.sunset) {
+      setIsDay(true);
+    }
+    else {
+      setIsDay(false);
+    }
+  }, [time, sunTimes.sunrise, sunTimes.sunset]);
+
+  // get location of client to determine local sun calculations & weather
+  useEffect(() => {
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
           });
-      }
-    }, [lat, lng]);
+        }, 
+        (err) => {
+          console.log('Error getting location');
+        });
+    }
+  }, [lat, lng]);
 
-    // get current weather of client through API call to weatherapi.com
-    useEffect(() => {
-      async function fetchData() {
-        try {
-          const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API}&q=${lat},${lng}`)
-          const json = await response.json();
-          setWeather(json.current.condition.text);
-        } catch (error) {
-          console.log('Weather API call failed');
-          }
-      }
-      fetchData();
-    }, [lat, lng, time])
-
-    // get sun calculations based on prior functions
-    const sunTimes = SunCalc.getTimes(time, lat, lng);
+  // get current weather of client through API call to weatherapi.com
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API}&q=${lat},${lng}`)
+        const json = await response.json();
+        setWeather(json.current.condition.text);
+      } catch (error) {
+        console.log('Weather API call failed');
+        }
+    }
+    fetchData();
+  }, [lat, lng, time]);
 
   return (
     <div>
       <h1>Lofi For You</h1>
       <YoutubeControls />
-      <ClientInfo time={time} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas />
+      <ClientInfo time={time} isDay={isDay} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
+      <LofiCanvas isDay={isDay}/>
     </div>
   );
 }
