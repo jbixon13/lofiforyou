@@ -47,7 +47,7 @@ function App() {
           console.log('Error getting location');
         });
     }
-  }, [lat, lng]);
+  }, []);
 
   // get current weather of client through API call to weatherapi.com
   useEffect(() => {
@@ -62,6 +62,12 @@ function App() {
     }
     fetchData();
   }, [lat, lng, time]);
+
+  // if (isDay && time < sunTimes.solarNoon) {
+  //   console.log('show sunrise');
+  // }
+
+  // console.log(sunTimes)
 
   return (
     <div>
