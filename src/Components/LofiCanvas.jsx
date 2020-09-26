@@ -22,29 +22,24 @@ const Cloud = ({height, position}) => {
 
     return(
         <group ref={group} castShadow>
-            <group position={[position, height, 0]}>
-                <mesh>
-                    <sphereBufferGeometry attach='geometry' args={[2, 7, 8]}/>
-                    <meshLambertMaterial attach='material' color='white' flatShading={true} />
-                </mesh>
-            </group>
-            <group position={[position - 2, height, 0]}>
-                <mesh>
-                    <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
-                    <meshLambertMaterial attach='material' color='white' flatShading={true} />
-                </mesh>
-            </group>
-            <group position={[position + 2, height, 0]}>
-                <mesh>
-                    <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
-                    <meshLambertMaterial attach='material' color='white' flatShading={true} />
-                </mesh>
-            </group>
+            <mesh position={[position, height, 0]}>
+                <sphereBufferGeometry attach='geometry' args={[2, 7, 8]}/>
+                <meshLambertMaterial attach='material' color='white' flatShading={true} />
+            </mesh>
+            <mesh position={[position - 2, height, 0]}>
+                <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
+                <meshLambertMaterial attach='material' color='white' flatShading={true} />
+            </mesh>
+            <mesh position={[position + 2, height, 0]}>
+                <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
+                <meshLambertMaterial attach='material' color='white' flatShading={true} />
+            </mesh>
         </group>
     )
 }
 
 const Clouds = () => {
+    // functions to randomly assign cloud position
     const heightRand = (min, max) => {
         return Math.random() * (max - min) + min
     }
@@ -52,7 +47,6 @@ const Clouds = () => {
     const positionRand = (min, max) => {
         return Math.random() * (max - min) + min
     }
-
 
     return(
         <group>
