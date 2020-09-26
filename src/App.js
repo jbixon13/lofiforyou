@@ -15,6 +15,7 @@ function App() {
 
   // get sun calculations based on date & location
   const sunTimes = SunCalc.getTimes(time, lat, lng);
+  const sunPosition = SunCalc.getPosition(time, lat, lng);
 
   // get local time of client on set interval (every 10 minutes)
   useEffect(() => {
@@ -73,7 +74,7 @@ function App() {
     <div>
       <h1>Lofi For You</h1>
       <YoutubeControls />
-      <ClientInfo time={time} isDay={isDay} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
+      <ClientInfo time={time} isDay={isDay} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
       <LofiCanvas isDay={isDay}/>
     </div>
   );
