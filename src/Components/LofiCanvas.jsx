@@ -9,10 +9,10 @@ const Plane = () => (
     </mesh>
 )
 
-const Box = () => {
+const Cloud = ({height, position}) => {
     const group = useRef()
     
-    // move the box across the canvas until at certain position, then reset
+    // move the cloud across the canvas until at certain position, then reset
     useFrame(() => {
         if (group.current.position.x < 30) {
             group.current.position.x = group.current.position.x += 0.01
@@ -22,24 +22,42 @@ const Box = () => {
 
     return(
         <group ref={group} castShadow>
-            <group position={[0, 3, 0]}>
+            <group position={[position, height, 0]}>
                 <mesh>
                     <sphereBufferGeometry attach='geometry' args={[2, 7, 8]}/>
-                    <meshLambertMaterial attach='material' color='white' />
+                    <meshLambertMaterial attach='material' color='white' flatShading={true} />
                 </mesh>
             </group>
-            <group position={[-2, 3, 0]}>
+            <group position={[position - 2, height, 0]}>
                 <mesh>
                     <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
-                    <meshLambertMaterial attach='material' color='white' />
+                    <meshLambertMaterial attach='material' color='white' flatShading={true} />
                 </mesh>
             </group>
-            <group position={[2, 3, 0]}>
+            <group position={[position + 2, height, 0]}>
                 <mesh>
                     <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
-                    <meshLambertMaterial attach='material' color='white' />
+                    <meshLambertMaterial attach='material' color='white' flatShading={true} />
                 </mesh>
             </group>
+        </group>
+    )
+}
+
+const Clouds = () => {
+    const heightRand = (min, max) => {
+        return Math.random() * (max - min) + min
+    }
+
+    const positionRand = (min, max) => {
+        return Math.random() * (max - min) + min
+    }
+
+
+    return(
+        <group>
+            <Cloud height={heightRand(3, 4)} position={positionRand(-2, 2)} />
+            <Cloud height={heightRand(8, 10)} position={positionRand(-4, 4)} />
         </group>
     )
 }
@@ -78,7 +96,7 @@ function LofiCanvas({isDay}) {
     return(
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 10, 15] }}>
             <OrbitControls autoRotate={false} />
-            <Box />
+            <Clouds />
             <Plane />
             <ambientLight />
             <pointLight
