@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
-import { OrbitControls, Sky, Stars } from 'drei'
+import { OrbitControls, Sky, Stars, MeshDistortMaterial } from 'drei'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
@@ -21,18 +21,18 @@ const Cloud = ({height, position}) => {
     })
 
     return(
-        <group ref={group} castShadow>
-            <mesh position={[position, height, 0]}>
-                <sphereBufferGeometry attach='geometry' args={[2, 7, 8]}/>
-                <meshLambertMaterial attach='material' color='white' flatShading={true} />
+        <group ref={group}>
+            <mesh castShadow recieveShadow position={[position, height, 0]}>
+                <icosahedronBufferGeometry attach='geometry' args={[2, 2]}/>
+                <MeshDistortMaterial attach='material' color='white' speed={0.5} />
             </mesh>
-            <mesh position={[position - 2, height, 0]}>
-                <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
-                <meshLambertMaterial attach='material' color='white' flatShading={true} />
+            <mesh castShadow recieveShadow position={[position - 2, height, 0]}>
+                <icosahedronBufferGeometry attach='geometry' args={[1.5, 2]}/>
+                <MeshDistortMaterial attach='material' color='white' speed={0.5} />
             </mesh>
-            <mesh position={[position + 2, height, 0]}>
-                <sphereBufferGeometry attach='geometry' args={[1.5, 7, 8]}/>
-                <meshLambertMaterial attach='material' color='white' flatShading={true} />
+            <mesh castShadow recieveShadow position={[position + 2, height, 0]}>
+                <icosahedronBufferGeometry attach='geometry' args={[1.5, 2]}/>
+                <MeshDistortMaterial attach='material' color='white' speed={0.5} />
             </mesh>
         </group>
     )
@@ -50,8 +50,8 @@ const Clouds = () => {
 
     return(
         <group>
-            <Cloud height={heightRand(3, 4)} position={positionRand(-2, 2)} />
-            <Cloud height={heightRand(8, 10)} position={positionRand(-4, 4)} />
+            <Cloud height={heightRand(3, 4)} position={positionRand(-8, 8)} />
+            <Cloud height={heightRand(8, 10)} position={positionRand(-8, 8)} />
         </group>
     )
 }
@@ -88,15 +88,15 @@ const Skybox = ({isDay}) => {
 
 function LofiCanvas({isDay}) {
     return(
-        <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 10, 15] }}>
+        <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 8, 15] }}>
             <OrbitControls autoRotate={false} />
             <Clouds />
             <Plane />
-            <ambientLight />
+            <ambientLight args={['white', 0.5]} />
             <pointLight
                 castShadow
-                position={[5, 5, 10]}
-                distance={50}
+                args={['white', 0.7]}
+                position={[0, 15, 8]}
             />
             <Skybox isDay={isDay}/>
             <gridHelper args={[30, 30, 30]} />
