@@ -1,7 +1,6 @@
 import React, { useRef, useMemo } from 'react'
-import { Canvas, useFrame, extend } from 'react-three-fiber'
+import { Canvas, useFrame } from 'react-three-fiber'
 import { OrbitControls, Sky, Stars, MeshDistortMaterial, shaderMaterial } from 'drei'
-import * as THREE from 'three'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
@@ -57,39 +56,6 @@ const Clouds = () => {
     )
 }
 
-const ColorMaterial = shaderMaterial(
-    { time: 0, color: new THREE.Color(0.2, 0.0, 0.1) },
-    `varying vec2 vUv;
-      void main() {
-        vUv = uv;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }`,
-    `uniform float time;
-      uniform vec3 color;
-      varying vec2 vUv;
-      void main() {
-        gl_FragColor.rgba = vec4(0.5 + 0.3 * sin(vUv.yxx + time) + color, 1.0);
-      }`
-)
-
-extend({ ColorMaterial })
-
-const ShaderBox = () => {
-    const ref = useRef()
-    
-    useFrame((state, delta) => {
-        ref.current.material.time += delta
-        ref.current.rotation.x = ref.current.rotation.y = ref.current.rotation.z += delta / 2
-    })
-
-    return(
-        <mesh ref={ref} position={[0, 2, 0]}>
-            <boxBufferGeometry attach='geometry' args={[2, 2, 2]} />
-            <colorMaterial attach='material' color="#203050" />
-        </mesh>
-    )
-}
-
 const Rain = ({ rainCount }) => {
     const initialPositions = []
     const initialVelocities = []
@@ -137,8 +103,8 @@ const Rain = ({ rainCount }) => {
     useFrame(({ clock }) => {
         if (geom.current) {
             geom.current.material.uniforms.time.value = clock.getElapsedTime()
-            geom.current.geometry.verticesNeedUpdate = true
-            // geom.current.geometry.attributes.position.setY(1, 20)
+            geom.current.geometry.attributes.position.needsUpdate = true
+            console.log(geom.current.geometry.attributes.position.array[1])            
         }
     });
 
