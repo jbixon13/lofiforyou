@@ -1,6 +1,7 @@
 import React, { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
-import { OrbitControls, Sky, Stars, MeshDistortMaterial, shaderMaterial } from 'drei'
+import { OrbitControls, MeshDistortMaterial, shaderMaterial } from 'drei'
+import Skybox from './Skybox'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
@@ -118,36 +119,6 @@ const Rain = ({ rainCount }) => {
             <shaderMaterial attach="material" uniforms={uniforms} vertexShader={vert} fragmentShader={frag} vertexColors />
         </points>
     )
-}
-
-const Skybox = ({isDay}) => {
-
-    var effectController = {
-        inclination:0.49,
-        azimuth: 0.25,
-    }
-
-    var theta = Math.PI * (effectController.inclination - 0.5);
-    var phi = 2 * Math.PI * (effectController.azimuth - 0.5);
-
-    if (isDay) {
-        return(
-            <Sky 
-                sunPosition={
-                    [
-                        Math.cos(phi),
-                        Math.sin(phi) * Math.sin(theta),
-                        Math.sin(phi) * Math.cos(theta)
-                    ]
-                }
-                turbidity={10}
-                rayleigh={3}
-                mieCoefficient={0.005}
-                mieDirectionalG={0.7}
-            />
-        )
-    }
-    else return <Stars />
 }
 
 function LofiCanvas({isDay}) {
