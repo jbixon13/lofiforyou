@@ -32,21 +32,3 @@ const Cloud = ({ cloudHeight, cloudPosition }) => {
 }
 
 export default Cloud
-
-// const Clouds = () => {
-//     // functions to randomly assign cloud position
-//     const heightRand = (min, max) => {
-//         return Math.random() * (max - min) + min
-//     }
-
-//     const positionRand = (min, max) => {
-//         return Math.random() * (max - min) + min
-//     }
-
-//     return(
-//         <group>
-//             <Cloud cloudHeight={heightRand(3, 4)} cloudPosition={positionRand(-8, 8)} />
-//             <Cloud cloudHeight={heightRand(8, 10)} cloudPosition={positionRand(-8, 8)} />
-//         </group>
-//     )
-// }

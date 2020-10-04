@@ -1,6 +1,6 @@
 import React from 'react'
 import Rain from './Rain'
-import Cloud from './Clouds'
+import Cloud from './Cloud'
 
 const Weather = () => {
     // functions to randomly assign cloud position
