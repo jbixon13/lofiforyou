@@ -3,25 +3,28 @@ import { useFrame } from 'react-three-fiber'
 import { shaderMaterial } from 'drei'
   
 const Rain = ({ rainCount, cloudPosition }) => {
-    const setInitialPositions = (rainCount) => {
-        const initialPositions = [];
-        const initialVelocities = [];
-        const initialAccelerations = [];
-        for (let i = 0; i < rainCount; i++) {
-          initialPositions.push(cloudPosition + Math.random() * 6);
-          initialPositions.push(Math.random() * 10);
-          initialPositions.push(-2 + Math.random() * 3);
-          initialVelocities.push(0);
-          initialVelocities.push(-1);
-          initialVelocities.push(0);
-          initialAccelerations.push(0);
-          initialAccelerations.push(8.8);
-          initialAccelerations.push(0);
-        }
-        return [initialPositions, initialVelocities, initialAccelerations];
-    };
 
     const [positions, velocities, accelerations] = useMemo(() => {
+        // set initial vertex variables for use in shaders
+        const setInitialPositions = (rainCount) => {
+            const initialPositions = [];
+            const initialVelocities = [];
+            const initialAccelerations = [];
+            for (let i = 0; i < rainCount; i++) {
+              initialPositions.push(cloudPosition + Math.random() * 6);
+              initialPositions.push(Math.random() * 10);
+              initialPositions.push(-2 + Math.random() * 3);
+              initialVelocities.push(0);
+              initialVelocities.push(-1);
+              initialVelocities.push(0);
+              initialAccelerations.push(0);
+              initialAccelerations.push(8.8);
+              initialAccelerations.push(0);
+            }
+            return [initialPositions, initialVelocities, initialAccelerations];
+        };
+
+        // apply initials over each vertex
         const [
             initialPositions,
             initialVelocities,
@@ -33,7 +36,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
         const accelerations = new Float32Array(initialAccelerations);
 
         return [positions, velocities, accelerations];
-    }, [rainCount, setInitialPositions]);
+    }, [rainCount, cloudPosition]);
 
     const uniforms = useMemo(() => ({ time: { value: 1.0 } }), []);
 
@@ -50,7 +53,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
             * vec4(
                 vec3(
                     pos[0],
-                    mod(pos[1] + (time * velocity[1] * acceleration[1]),10.),
+                    mod(pos[1] + (time * velocity[1] * acceleration[1]), 10.),
                     pos[2]), 1.0);
         gl_PointSize = 5.0;
     }`

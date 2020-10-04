@@ -20,7 +20,6 @@ const Weather = () => {
             <Cloud cloudHeight={cloudHeight} cloudPosition={cloudPosition} />
             <Rain rainCount={50} cloudPosition={cloudPosition}/>
         </group>
-
     )
 }
 
