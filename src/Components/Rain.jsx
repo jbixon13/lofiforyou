@@ -18,7 +18,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
               initialVelocities.push(-1);
               initialVelocities.push(0);
               initialAccelerations.push(0);
-              initialAccelerations.push(8.8);
+              initialAccelerations.push(10.8);
               initialAccelerations.push(0);
             }
             return [initialPositions, initialVelocities, initialAccelerations];
@@ -55,7 +55,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
                     pos[0],
                     mod(pos[1] + (time * velocity[1] * acceleration[1]), 10.),
                     pos[2]), 1.0);
-        gl_PointSize = 5.0;
+        gl_PointSize = 3.0;
     }`
 
     const frag = `uniform float time;
