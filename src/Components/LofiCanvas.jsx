@@ -2,8 +2,9 @@ import React from 'react'
 import { Canvas } from 'react-three-fiber'
 import { OrbitControls } from 'drei'
 import Skybox from './Skybox'
-import Clouds from './Clouds'
-import Rain from './Rain'
+// import Clouds from './Clouds'
+// import Rain from './Rain'
+import Weather from './Weather'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
@@ -16,9 +17,10 @@ function LofiCanvas({isDay}) {
     return(
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 8, 15] }}>
             <OrbitControls autoRotate={false} />
-            <Clouds />
+            {/* <Clouds /> */}
+            {/* <Rain rainCount={50} /> */}
+            <Weather />
             <Plane />
-            <Rain rainCount={50} />
             <ambientLight args={['white', 0.5]} />
             <pointLight
                 castShadow

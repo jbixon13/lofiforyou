@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import {useFrame } from 'react-three-fiber'
 import { MeshDistortMaterial } from 'drei'
 
-const Cloud = ({height, position}) => {
+const Cloud = ({ cloudHeight, cloudPosition }) => {
     const group = useRef()
     
     // move the cloud across the canvas until at certain position, then reset
@@ -15,15 +15,15 @@ const Cloud = ({height, position}) => {
 
     return(
         <group ref={group}>
-            <mesh castShadow recieveShadow position={[position, height, 0]}>
+            <mesh castShadow recieveShadow position={[cloudPosition, cloudHeight, 0]}>
                 <icosahedronBufferGeometry attach='geometry' args={[2, 2]}/>
                 <MeshDistortMaterial attach='material' color='white' speed={0.5} />
             </mesh>
-            <mesh castShadow recieveShadow position={[position - 2, height, 0]}>
+            <mesh castShadow recieveShadow position={[cloudPosition - 2, cloudHeight, 0]}>
                 <icosahedronBufferGeometry attach='geometry' args={[1.5, 2]}/>
                 <MeshDistortMaterial attach='material' color='white' speed={0.5} />
             </mesh>
-            <mesh castShadow recieveShadow position={[position + 2, height, 0]}>
+            <mesh castShadow recieveShadow position={[cloudPosition + 2, cloudHeight, 0]}>
                 <icosahedronBufferGeometry attach='geometry' args={[1.5, 2]}/>
                 <MeshDistortMaterial attach='material' color='white' speed={0.5} />
             </mesh>
@@ -31,22 +31,22 @@ const Cloud = ({height, position}) => {
     )
 }
 
-const Clouds = () => {
-    // functions to randomly assign cloud position
-    const heightRand = (min, max) => {
-        return Math.random() * (max - min) + min
-    }
+export default Cloud
 
-    const positionRand = (min, max) => {
-        return Math.random() * (max - min) + min
-    }
+// const Clouds = () => {
+//     // functions to randomly assign cloud position
+//     const heightRand = (min, max) => {
+//         return Math.random() * (max - min) + min
+//     }
 
-    return(
-        <group>
-            <Cloud height={heightRand(3, 4)} position={positionRand(-8, 8)} />
-            <Cloud height={heightRand(8, 10)} position={positionRand(-8, 8)} />
-        </group>
-    )
-}
+//     const positionRand = (min, max) => {
+//         return Math.random() * (max - min) + min
+//     }
 
-export default Clouds
+//     return(
+//         <group>
+//             <Cloud cloudHeight={heightRand(3, 4)} cloudPosition={positionRand(-8, 8)} />
+//             <Cloud cloudHeight={heightRand(8, 10)} cloudPosition={positionRand(-8, 8)} />
+//         </group>
+//     )
+// }
