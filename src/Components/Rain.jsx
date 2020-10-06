@@ -13,7 +13,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
             for (let i = 0; i < rainCount; i++) {
               initialPositions.push(cloudPosition + Math.random() * 6);
               initialPositions.push(Math.random() * 10);
-              initialPositions.push(-2 + Math.random() * 3);
+              initialPositions.push(-15 + Math.random() * 30);
               initialVelocities.push(0);
               initialVelocities.push(-1);
               initialVelocities.push(0);
