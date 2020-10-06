@@ -52,7 +52,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
             * modelViewMatrix
             * vec4(
                 vec3(
-                    pos[0],
+                    mod(pos[0] * time, 40.) - 20.,
                     mod(pos[1] + (time * velocity[1] * acceleration[1]), 10.),
                     pos[2]), 1.0);
         gl_PointSize = 3.0;
@@ -60,8 +60,7 @@ const Rain = ({ rainCount, cloudPosition }) => {
 
     const frag = `uniform float time;
     void main() {
-        float z = 1.0 - (gl_FragCoord.z / gl_FragCoord.w) / 20.0;
-        gl_FragColor = vec4(sin(time * 2.0) * z, cos(time) * z, atan(time) * z, 1.0);
+        gl_FragColor = vec4(0.323, 0.615, 1.0, 1.0);
     }`
 
     useFrame(({ clock }) => {

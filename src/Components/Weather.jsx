@@ -18,7 +18,7 @@ const Weather = () => {
     return(
         <group>
             <Cloud cloudHeight={cloudHeight} cloudPosition={cloudPosition} />
-            <Rain rainCount={50} cloudPosition={cloudPosition}/>
+            <Rain rainCount={200} cloudPosition={cloudPosition}/>
         </group>
     )
 }
