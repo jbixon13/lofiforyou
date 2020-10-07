@@ -64,18 +64,12 @@ function App() {
     fetchData();
   }, [lat, lng, time]);
 
-  // if (isDay && time < sunTimes.solarNoon) {
-  //   console.log('show sunrise');
-  // }
-
-  // console.log(sunTimes)
-
   return (
     <div>
       <h1>Lofi For You</h1>
       <YoutubeControls />
       <ClientInfo time={time} isDay={isDay} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas isDay={isDay}/>
+      <LofiCanvas isDay={isDay} weather={weather}/>
     </div>
   );
 }

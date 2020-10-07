@@ -2,15 +2,15 @@ import React, { useRef, useMemo } from 'react'
 import { useFrame } from 'react-three-fiber'
 import { shaderMaterial } from 'drei'
   
-const Rain = ({ rainCount }) => {
+const Snow = ({ snowCount }) => {
 
     const [positions, velocities, accelerations] = useMemo(() => {
         // set initial vertex variables for use in shaders
-        const setInitialPositions = (rainCount) => {
+        const setInitialPositions = (snowCount) => {
             const initialPositions = [];
             const initialVelocities = [];
             const initialAccelerations = [];
-            for (let i = 0; i < rainCount; i++) {
+            for (let i = 0; i < snowCount; i++) {
               initialPositions.push(Math.random() * 6);
               initialPositions.push(Math.random() * 15);
               initialPositions.push(-15 + Math.random() * 30);
@@ -18,7 +18,7 @@ const Rain = ({ rainCount }) => {
               initialVelocities.push(-1);
               initialVelocities.push(0);
               initialAccelerations.push(0);
-              initialAccelerations.push(10.8);
+              initialAccelerations.push(2.8);
               initialAccelerations.push(0);
             }
             return [initialPositions, initialVelocities, initialAccelerations];
@@ -29,14 +29,14 @@ const Rain = ({ rainCount }) => {
             initialPositions,
             initialVelocities,
             initialAccelerations
-        ] = setInitialPositions(rainCount);
+        ] = setInitialPositions(snowCount);
 
         const positions = new Float32Array(initialPositions);
         const velocities = new Float32Array(initialVelocities);
         const accelerations = new Float32Array(initialAccelerations);
 
         return [positions, velocities, accelerations];
-    }, [rainCount]);
+    }, [snowCount]);
 
     const uniforms = useMemo(() => ({ time: { value: 1.0 } }), []);
 
@@ -55,12 +55,12 @@ const Rain = ({ rainCount }) => {
                     mod(pos[0] * time, 40.) - 20.,
                     mod(pos[1] + (time * velocity[1] * acceleration[1]), 15.),
                     pos[2]), 1.0);
-        gl_PointSize = 3.0;
+        gl_PointSize = 5.0;
     }`
 
     const frag = `uniform float time;
     void main() {
-        gl_FragColor = vec4(0.323, 0.615, 1.0, 1.0);
+        gl_FragColor = vec4(0.915, 0.971, 1.0, 1.0);
     }`
 
     useFrame(({ clock }) => {
@@ -103,4 +103,4 @@ const Rain = ({ rainCount }) => {
     )
 }
 
-export default Rain
+export default Snow

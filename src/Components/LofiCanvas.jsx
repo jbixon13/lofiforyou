@@ -11,11 +11,11 @@ const Plane = () => (
     </mesh>
 )
 
-function LofiCanvas({isDay}) {
+function LofiCanvas({ isDay, weather }) {
     return(
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 8, 15] }}>
             <OrbitControls autoRotate={false} />
-            <Weather />
+            <Weather weather={'snow'} />
             <Plane />
             <ambientLight args={['white', 0.5]} />
             <pointLight
