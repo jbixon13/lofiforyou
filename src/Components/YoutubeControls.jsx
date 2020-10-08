@@ -17,7 +17,7 @@ function YoutubeControls() {
     }
 
     return(
-        <div>
+        <div className='youtube-controls'>
             <Youtube videoId='5qap5aO4i9A' onReady={onReady}/>
             <button onClick={onPlayVideo}>Play</button>
             <button onClick={onPauseVideo}>Pause</button>
