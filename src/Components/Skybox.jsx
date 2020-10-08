@@ -4,7 +4,7 @@ import { Sky, Stars } from 'drei'
 const Skybox = ({isDay}) => {
 
     var effectController = {
-        inclination:0.49,
+        inclination: 0,
         azimuth: 0.25,
     }
 

@@ -6,7 +6,7 @@ const Cloud = ({ cloudHeight, cloudPosition }) => {
     const group = useRef()
     
     // move the cloud across the canvas until at certain position, then reset
-    useFrame(({ clock }) => {
+    useFrame(() => {
         if (group.current.position.x < 30) {
             group.current.position.x = group.current.position.x += 0.01
         }
