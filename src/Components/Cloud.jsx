@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import {useFrame } from 'react-three-fiber'
-import { MeshDistortMaterial } from 'drei'
+import { MeshDistortMaterial } from '@react-three/drei'
 
 const Cloud = ({ cloudHeight, cloudPosition }) => {
     const group = useRef()

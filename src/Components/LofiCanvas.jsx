@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas } from 'react-three-fiber'
-import { OrbitControls } from 'drei'
+import { OrbitControls } from '@react-three/drei'
 import Skybox from './Skybox'
 import Weather from './Weather'
 import Fog from './Fog'
