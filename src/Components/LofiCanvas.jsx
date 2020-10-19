@@ -4,6 +4,7 @@ import { OrbitControls } from 'drei'
 import Skybox from './Skybox'
 import Weather from './Weather'
 import Fog from './Fog'
+import Grass from './Grass'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
@@ -19,6 +20,7 @@ function LofiCanvas({ isDay, weather }) {
             <Weather weather={weather} />
             <Fog isDay={isDay} />
             <Plane />
+            {/* <Grass /> */}
             <ambientLight args={['white', 0.5]} />
             <pointLight
                 castShadow
