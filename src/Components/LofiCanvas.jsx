@@ -15,7 +15,7 @@ const Plane = () => (
 
 function LofiCanvas({ isDay, weather }) {
     return(
-        <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 8, 15] }}>
+        <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 4, 15] }}>
             <OrbitControls autoRotate={false} />
             <Weather weather={weather} />
             {/* <Fog isDay={isDay} /> */}
