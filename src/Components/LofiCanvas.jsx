@@ -18,7 +18,7 @@ function LofiCanvas({ isDay, weather }) {
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 8, 15] }}>
             <OrbitControls autoRotate={false} />
             <Weather weather={weather} />
-            <Fog isDay={isDay} />
+            {/* <Fog isDay={isDay} /> */}
             <Plane />
             {/* <Grass /> */}
             <ambientLight args={['white', 0.5]} />
@@ -27,7 +27,7 @@ function LofiCanvas({ isDay, weather }) {
                 args={['white', 0.7]}
                 position={[0, 15, 8]}
             />
-            <Skybox isDay={isDay}/>
+            <Skybox isDay={isDay} weather={weather} />
             <gridHelper args={[30, 30, 30]} />
         </Canvas>
     )
