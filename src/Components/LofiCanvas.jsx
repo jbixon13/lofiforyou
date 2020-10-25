@@ -9,11 +9,11 @@ import Grass from './Grass'
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
         <planeBufferGeometry attach='geometry' args={[250, 100]} />
-        <meshPhysicalMaterial attach='material' color='pink' />
+        <meshPhysicalMaterial attach='material' color='lightgreen' />
     </mesh>
 )
 
-function LofiCanvas({ isDay, weather }) {
+function LofiCanvas({ isDay, sunPhase, weather }) {
     return(
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 4, 15] }}>
             <OrbitControls autoRotate={false} />
@@ -27,7 +27,7 @@ function LofiCanvas({ isDay, weather }) {
                 args={['white', 0.7]}
                 position={[0, 15, 8]}
             />
-            <Skybox isDay={isDay} weather={weather} />
+            <Skybox isDay={isDay} sunPhase={sunPhase} weather={weather} />
             <gridHelper args={[30, 30, 30]} />
         </Canvas>
     )

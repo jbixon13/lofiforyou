@@ -10,6 +10,7 @@ const WEATHER_API = process.env.REACT_APP_WEATHER_API
 function App() {
   const [time, setTime] = useState(new Date());
   const [isDay, setIsDay] = useState(true);
+  const [sunPhase, setSunPhase] = useState('day');
   const [{lat, lng}, setLocation] = useState({lat: 0, lng: 0});
   const [weather, setWeather] = useState([]);
 
@@ -27,13 +28,30 @@ function App() {
 
   // get day/night indicator for use in Skybox
   useEffect(() => {
-    if(time > sunTimes.sunrise && time < sunTimes.sunset) {
+    if(time > sunTimes.sunrise && time < sunTimes.night) {
       setIsDay(true);
     }
     else {
       setIsDay(false);
     }
   }, [time, sunTimes.sunrise, sunTimes.sunset]);
+
+  // get phase of the day for use in Skybox
+  useEffect(() => {
+    if (time > sunTimes.sunrise && time < sunTimes.sunriseEnd) {
+      setSunPhase('sunrise')
+    }
+    else if (time > sunTimes.sunriseEnd && time < sunTimes.sunsetStart) {
+      setSunPhase('day')
+    }
+    else if (time > sunTimes.sunsetStart && time < sunTimes.sunset) {
+      setSunPhase('sunset')
+    }
+    else if (time > sunTimes.sunset && time < sunTimes.night) {
+      setSunPhase('dusk')
+    }
+    else setSunPhase('night')
+  }, [time, sunTimes]);
 
   // get location of client to determine local sun calculations & weather
   useEffect(() => {
@@ -69,8 +87,8 @@ function App() {
       <h1>Lofi For You</h1>
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
       <YoutubeControls />
-      <ClientInfo time={time} isDay={isDay} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas isDay={isDay} weather={weather}/>
+      <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
+      <LofiCanvas isDay={isDay} weather={weather} time={time} />
     </div>
   );
 }
