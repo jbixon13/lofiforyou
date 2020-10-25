@@ -17,6 +17,7 @@ function App() {
   // get sun calculations based on date & location
   const sunTimes = SunCalc.getTimes(time, lat, lng);
   const sunPosition = SunCalc.getPosition(time, lat, lng);
+  console.log(sunTimes)
 
   // get local time of client on set interval (every 10 minutes)
   useEffect(() => {
@@ -28,7 +29,7 @@ function App() {
 
   // get day/night indicator for use in Skybox
   useEffect(() => {
-    if(time > sunTimes.sunrise && time < sunTimes.night) {
+    if(time > sunTimes.sunrise && time < sunTimes.dusk) {
       setIsDay(true);
     }
     else {
@@ -47,7 +48,7 @@ function App() {
     else if (time > sunTimes.sunsetStart && time < sunTimes.sunset) {
       setSunPhase('sunset')
     }
-    else if (time > sunTimes.sunset && time < sunTimes.night) {
+    else if (time > sunTimes.sunset && time < sunTimes.dusk) {
       setSunPhase('dusk')
     }
     else setSunPhase('night')

@@ -49,3 +49,16 @@ div .day {
 div .night {
   background: #272730;
 }
+
+body .night {
+  background-color:  #272730;
+  color: white;
+}
+
+/* rely on user preference for UI theme if stated */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color:  #272730;
+    color: white;
+  }
+}
