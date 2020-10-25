@@ -17,7 +17,6 @@ function App() {
   // get sun calculations based on date & location
   const sunTimes = SunCalc.getTimes(time, lat, lng);
   const sunPosition = SunCalc.getPosition(time, lat, lng);
-  console.log(sunTimes)
 
   // get local time of client on set interval (every 10 minutes)
   useEffect(() => {

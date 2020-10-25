@@ -3,9 +3,13 @@ import { Sky, Stars } from '@react-three/drei'
 
 const Skybox = ({ isDay, sunPhase, weather }) => {
     const weatherString = JSON.stringify(weather).toLowerCase();
+
+    const weatherClearList = ['sunny', 'partly cloudy'];
     const weatherCloudyList = ['cloudy', 'overcast', 'mist'];
     const weatherRainList = ['rain'];
     const weatherSnowList = ['snow'];
+
+    const weatherClear = weatherClearList.some(el => weatherString.includes(el));
     const weatherCloudy = weatherCloudyList.some(el => weatherString.includes(el));
     const weatherRain = weatherRainList.some(el => weatherString.includes(el));
     const weatherSnow = weatherSnowList.some(el => weatherString.includes(el));
@@ -38,8 +42,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else if (sunPhase === 'sunrise') {
-        console.log('debug 4')
+    else if (weatherClear && sunPhase === 'sunrise') {
+        console.log('clear sunrise')
         return(
             <Sky
                 inclination={0.49}
@@ -47,8 +51,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else if (sunPhase === 'day') {
-        console.log('debug 5')
+    else if (weatherClear && sunPhase === 'day') {
+        console.log('clear daytime')
         return(
             <Sky 
                 inclination={1}
@@ -56,8 +60,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else if (sunPhase === 'sunset') {
-        console.log('debug 6')
+    else if (weatherClear && sunPhase === 'sunset') {
+        console.log('clear sunset')
         return(
             <Sky
                 inclination={0.49}
@@ -65,7 +69,129 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else return <Stars />
+    else if (weatherClear && sunPhase === 'dusk') {
+        console.log('clear dusk')
+        return(
+            <Sky
+                inclination={0.50}
+                azimuth={0.25}                
+            />
+        )
+    }
+    else if (weatherCloudy && sunPhase === 'sunrise') {
+        console.log('cloudy sunrise')
+        return(
+            <Sky
+                inclination={0.49}
+                azimuth={0.25}
+            />
+        )
+    }
+    else if (weatherCloudy && sunPhase === 'day') {
+        console.log('cloudy daytime')
+        return(
+            <Sky 
+                inclination={1}
+                azimuth={0.75}
+            />
+        )
+    }
+    else if (weatherCloudy && sunPhase === 'sunset') {
+        console.log('cloudy sunset')
+        return(
+            <Sky
+                inclination={0.49}
+                azimuth={0.25}
+            />
+        )
+    }
+    else if (weatherCloudy && sunPhase === 'dusk') {
+        console.log('cloudy dusk')
+        return(
+            <Sky
+                inclination={0.50}
+                azimuth={0.25}                
+            />
+        )
+    }
+    else if (weatherRain && sunPhase === 'sunrise') {
+        console.log('rainy sunrise')
+        return(
+            <Sky
+                inclination={0.49}
+                azimuth={0.25}
+            />
+        )
+    }
+    else if (weatherRain && sunPhase === 'day') {
+        console.log('rainy daytime')
+        return(
+            <Sky 
+                inclination={1}
+                azimuth={0.75}
+            />
+        )
+    }
+    else if (weatherRain && sunPhase === 'sunset') {
+        console.log('rainy sunset')
+        return(
+            <Sky
+                inclination={0.49}
+                azimuth={0.25}
+            />
+        )
+    }
+    else if (weatherRain && sunPhase === 'dusk') {
+        console.log('rainy dusk')
+        return(
+            <Sky
+                inclination={0.50}
+                azimuth={0.25}                
+            />
+        )
+    }
+    else if (weatherSnow && sunPhase === 'sunrise') {
+        console.log('snowy sunrise')
+        return(
+            <Sky
+                inclination={0.49}
+                azimuth={0.25}
+            />
+        )
+    }
+    else if (weatherSnow && sunPhase === 'day') {
+        console.log('snowy daytime')
+        return(
+            <Sky 
+                inclination={1}
+                azimuth={0.75}
+            />
+        )
+    }
+    else if (weatherSnow && sunPhase === 'sunset') {
+        console.log('snowy sunset')
+        return(
+            <Sky
+                inclination={0.49}
+                azimuth={0.25}
+            />
+        )
+    }
+    else if (weatherSnow && sunPhase === 'dusk') {
+        console.log('snowy dusk')
+        return(
+            <Sky
+                inclination={0.50}
+                azimuth={0.25}                
+            />
+        )
+    }
+    else {
+        console.log('debug night')
+        return(
+            <Stars />
+        )
+    }
 }
 
 export default Skybox
