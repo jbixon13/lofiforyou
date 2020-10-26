@@ -90,10 +90,18 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     else if (weatherCloudy && sunPhase === 'day') {
         console.log('cloudy daytime')
         return(
-            <Sky 
-                inclination={1}
-                azimuth={0.25} 
-            />
+            <group>
+                <Sky 
+                    inclination={1}
+                    azimuth={0.25} 
+                />
+                <ambientLight args={['white', 0.5]} />
+                <pointLight
+                    castShadow
+                    args={['white', 0.5]}
+                    position={[0, 15, 8]}
+                />
+            </group>
         )
     }
     else if (weatherCloudy && sunPhase === 'sunset') {
