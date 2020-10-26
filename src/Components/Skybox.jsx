@@ -54,10 +54,19 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     else if (weatherClear && sunPhase === 'sunset') {
         console.log('clear sunset')
         return(
-            <Sky
-                inclination={0.49}
-                azimuth={0.25}
-            />
+            <group>
+                <Sky
+                    inclination={0.49}
+                    azimuth={0.25}
+                />
+                <ambientLight args={['white', 0.5]} />
+                {/* shadow will face the wrong side, need to think about more */}
+                <pointLight
+                    castShadow
+                    args={['white', 0.5]}
+                    position={[0, 15, 8]}
+                />
+            </group>
         )
     }
     else if (weatherClear && sunPhase === 'dusk') {
