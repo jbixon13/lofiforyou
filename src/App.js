@@ -34,7 +34,7 @@ function App() {
     else {
       setIsDay(false);
     }
-  }, [time, sunTimes.sunrise, sunTimes.sunset]);
+  }, [time, sunTimes.sunrise, sunTimes.dusk]);
 
   // get phase of the day for use in Skybox
   useEffect(() => {
