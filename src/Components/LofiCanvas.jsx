@@ -3,8 +3,8 @@ import { Canvas } from 'react-three-fiber'
 import { OrbitControls } from '@react-three/drei'
 import Skybox from './Skybox'
 import Weather from './Weather'
-import Fog from './Fog'
-import Grass from './Grass'
+// import Fog from './Fog'
+// import Grass from './Grass'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
