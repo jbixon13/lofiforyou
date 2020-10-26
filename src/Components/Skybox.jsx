@@ -4,36 +4,19 @@ import { Sky, Stars } from '@react-three/drei'
 const Skybox = ({ isDay, sunPhase, weather }) => {
     const weatherString = JSON.stringify(weather).toLowerCase();
 
+    // organize weather conditions into groups for skybox manipulation
     const weatherClearList = ['sunny', 'partly cloudy'];
     const weatherCloudyList = ['cloudy', 'overcast', 'mist'];
     const weatherRainList = ['rain'];
     const weatherSnowList = ['snow'];
 
+    // boolean indicators of the weather
     const weatherClear = weatherClearList.some(el => weatherString.includes(el));
     const weatherCloudy = weatherCloudyList.some(el => weatherString.includes(el));
     const weatherRain = weatherRainList.some(el => weatherString.includes(el));
     const weatherSnow = weatherSnowList.some(el => weatherString.includes(el));
 
-    if (isDay && weatherCloudy) {
-        console.log('debug 1')
-        return(
-            <Sky
-                inclination={1}
-                azimuth={0.25} 
-            />
-        )
-    }
-    else if (isDay && weatherRain) {
-        console.log('debug 2')
-        return(
-            <Sky
-            inclination={1}
-            azimuth={0.75}
-            rayleigh={0}
-            />
-        )
-    }
-    else if (weatherClear && sunPhase === 'sunrise') {
+    if (weatherClear && sunPhase === 'sunrise') {
         console.log('clear sunrise')
         return(
             <group>
@@ -100,7 +83,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <Sky 
                 inclination={1}
-                azimuth={0.75}
+                azimuth={0.25} 
             />
         )
     }
@@ -137,6 +120,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <Sky 
                 inclination={1}
                 azimuth={0.75}
+                rayleigh={0}
             />
         )
     }

@@ -4,8 +4,8 @@ function ClientInfo({time, isDay, sunPhase, sunPosition, lat, lng, sunTimes, wea
     return(
         <div className='client-info'>
             <h4>Debugging:</h4>
-            <p><strong>Local time:</strong> {time.toLocaleTimeString()}</p>
             <p><strong>Location:</strong> {lat}, {lng}</p>
+            <p><strong>Local time:</strong> {time.toLocaleTimeString()}</p>
             <p><strong>Day or night:</strong> {isDay ? 'daytime' : 'nighttime'}</p>
             <p><strong>Time of day:</strong> {sunPhase}</p>
             <p><strong>Phases of day:</strong></p>
