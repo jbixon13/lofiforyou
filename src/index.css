@@ -35,6 +35,10 @@ iframe {
   margin-right: 1em;
 }
 
+.client-info {
+  margin-left: 2rem;
+}
+
 Canvas {
   height: 100vh;
   width: 100%;
