@@ -33,31 +33,39 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else if (isDay && weatherSnow) {
-        console.log('debug 3')
-        return(
-            <Sky
-            inclination={1}
-            azimuth={0.75}
-            />
-        )
-    }
     else if (weatherClear && sunPhase === 'sunrise') {
         console.log('clear sunrise')
         return(
-            <Sky
-                inclination={0.49}
-                azimuth={0.25}
-            />
+            <group>
+                <Sky
+                    inclination={0.49}
+                    azimuth={0.25}
+                />
+                <ambientLight args={['white', 0.5]} />
+                {/* shadow will face the wrong side, need to think about more */}
+                <pointLight
+                    castShadow
+                    args={['white', 0.5]}
+                    position={[0, 15, 8]}
+                />
+            </group>
         )
     }
     else if (weatherClear && sunPhase === 'day') {
         console.log('clear daytime')
         return(
-            <Sky 
-                inclination={1}
-                azimuth={0.75}
-            />
+            <group>
+                <Sky 
+                    inclination={1}
+                    azimuth={0.75}
+                />
+                <ambientLight args={['white', 0.5]} />
+                <pointLight
+                    castShadow
+                    args={['white', 0.5]}
+                    position={[0, 15, 8]}
+                />
+            </group>
         )
     }
     else if (weatherClear && sunPhase === 'sunset') {
@@ -189,7 +197,14 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     else {
         console.log('debug night')
         return(
-            <Stars />
+            <group>
+                <Stars />
+                <ambientLight args={['#272730', 0.2]} />
+                <pointLight
+                    args={['#272730', 0.3]}
+                    position={[0, 15, 8]}
+                />
+            </group>
         )
     }
 }

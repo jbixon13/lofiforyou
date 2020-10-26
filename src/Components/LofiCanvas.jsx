@@ -21,12 +21,6 @@ function LofiCanvas({ isDay, sunPhase, weather }) {
             {/* <Fog isDay={isDay} /> */}
             <Plane />
             {/* <Grass /> */}
-            <ambientLight args={['white', 0.5]} />
-            <pointLight
-                castShadow
-                args={['white', 0.7]}
-                position={[0, 15, 8]}
-            />
             <Skybox isDay={isDay} sunPhase={sunPhase} weather={weather} />
             <gridHelper args={[30, 30, 30]} />
         </Canvas>
