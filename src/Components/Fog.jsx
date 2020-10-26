@@ -3,7 +3,7 @@ import React from 'react'
 const Fog = ({ isDay }) => {
     if (isDay) {
         return(
-            <fog attach='fog' args={['white', 5, 60]} />
+            <fog attach='fog' args={['#f4f5f9', 5, 30]} />
         )
     }
     else return(

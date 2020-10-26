@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div>
-      <h1>Lofi For You</h1>
+      <h1>Lofi for You</h1>
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
       <YoutubeControls />
       <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
