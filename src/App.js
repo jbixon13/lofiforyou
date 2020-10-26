@@ -88,7 +88,7 @@ function App() {
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
       <YoutubeControls />
       <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas isDay={isDay} weather={weather} time={time} />
+      <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     const weatherString = JSON.stringify(weather).toLowerCase();
 
     // organize weather conditions into groups for skybox manipulation
-    const weatherClearList = ['sunny', 'partly cloudy'];
+    const weatherClearList = ['sunny', 'clear', 'partly cloudy'];
     const weatherCloudyList = ['cloudy', 'overcast', 'mist'];
     const weatherRainList = ['rain'];
     const weatherSnowList = ['snow'];
@@ -187,8 +187,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else {
-        console.log('debug night')
+    else if (weatherClear && sunPhase === 'night') {
+        console.log('clear night')
         return(
             <group>
                 <Stars />
@@ -199,6 +199,58 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                 />
             </group>
         )
+    }
+    else if (weatherCloudy && sunPhase === 'night') {
+        console.log('cloudy night')
+        return(
+            <group>
+                <Stars />
+                <Sky 
+                    rayleigh={10}
+                />
+                <ambientLight args={['#272730', 0.2]} />
+                <pointLight
+                    args={['#272730', 0.3]}
+                    position={[0, 15, 8]}
+                />
+            </group>
+        )
+    }
+    else if (weatherRain && sunPhase === 'night') {
+        console.log('rainy night')
+        return(
+            <group>
+                <Stars />
+                <Sky 
+                    rayleigh={10}
+                />
+                <ambientLight args={['#272730', 0.2]} />
+                <pointLight
+                    args={['#272730', 0.3]}
+                    position={[0, 15, 8]}
+                />
+            </group>
+        )
+    }
+    else if (weatherSnow && sunPhase === 'night') {
+        console.log('snowy night')
+        return(
+            <group>
+                <Stars />
+                <Sky 
+                    rayleigh={10}
+                />
+                <ambientLight args={['#272730', 0.2]} />
+                <pointLight
+                    args={['#272730', 0.3]}
+                    position={[0, 15, 8]}
+                />
+            </group>
+        )
+    }
+    else {
+        console.log('no if-else condition met', weather, sunPhase);
+        return null
     }
 }
 
