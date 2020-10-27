@@ -7,7 +7,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     // organize weather conditions into groups for skybox manipulation
     const weatherClearList = ['sunny', 'clear', 'partly cloudy'];
     const weatherCloudyList = ['cloudy', 'overcast', 'mist'];
-    const weatherRainList = ['rain'];
+    const weatherRainList = ['rain', 'drizzle'];
     const weatherSnowList = ['snow'];
 
     // boolean indicators of the weather
@@ -25,11 +25,10 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     azimuth={0.25}
                 />
                 <ambientLight args={['white', 0.5]} />
-                {/* shadow will face the wrong side, need to think about more */}
                 <pointLight
                     castShadow
                     args={['white', 0.5]}
-                    position={[0, 15, 8]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
@@ -46,7 +45,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                 <pointLight
                     castShadow
                     args={['white', 0.5]}
-                    position={[0, 15, 8]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
@@ -60,11 +59,10 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     azimuth={0.25}
                 />
                 <ambientLight args={['white', 0.5]} />
-                {/* shadow will face the wrong side, need to think about more */}
                 <pointLight
                     castShadow
                     args={['white', 0.5]}
-                    position={[0, 15, 8]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
@@ -72,10 +70,30 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     else if (weatherClear && sunPhase === 'dusk') {
         console.log('clear dusk')
         return(
-            <Sky
-                inclination={0.49}
-                azimuth={0.25}                
-            />
+            <group>
+                <Sky
+                    inclination={0.49}
+                    azimuth={0.25}                
+                />
+                <ambientLight args={['white', 0.5]} />
+                <pointLight
+                    args={['white', 0.5]}
+                    position={[0, 15, -8]}
+                />
+            </group>
+        )
+    }
+    else if (weatherClear && sunPhase === 'night') {
+        console.log('clear night')
+        return(
+            <group>
+                <Stars />
+                <ambientLight args={['#272730', 0.2]} />
+                <pointLight
+                    args={['#272730', 0.3]}
+                    position={[0, 15, -8]}
+                />
+            </group>
         )
     }
     else if (weatherCloudy && sunPhase === 'sunrise') {
@@ -113,14 +131,14 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                 <Sky 
                     inclination={1}
                     azimuth={0.25}
-                    turbidity={8}
-                    rayleigh={6} 
+                    rayleigh={0}
+                    turbidity={0.6}
                 />
                 <ambientLight args={['white', 0.5]} />
                 <pointLight
                     castShadow
                     args={['white', 0.5]}
-                    position={[0, 15, 8]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
@@ -224,6 +242,22 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             </group>
         )
     }
+    else if (weatherRain && sunPhase === 'night') {
+        console.log('rainy night')
+        return(
+            <group>
+                <Stars />
+                <Sky 
+                    rayleigh={10}
+                />
+                <ambientLight args={['#272730', 0.2]} />
+                <pointLight
+                    args={['#272730', 0.3]}
+                    position={[0, 15, -8]}
+                />
+            </group>
+        )
+    }
     else if (weatherSnow && sunPhase === 'sunrise') {
         console.log('snowy sunrise')
         return(
@@ -258,35 +292,6 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                 inclination={0.50}
                 azimuth={0.25}                
             />
-        )
-    }
-    else if (weatherClear && sunPhase === 'night') {
-        console.log('clear night')
-        return(
-            <group>
-                <Stars />
-                <ambientLight args={['#272730', 0.2]} />
-                <pointLight
-                    args={['#272730', 0.3]}
-                    position={[0, 15, 8]}
-                />
-            </group>
-        )
-    }
-    else if (weatherRain && sunPhase === 'night') {
-        console.log('rainy night')
-        return(
-            <group>
-                <Stars />
-                <Sky 
-                    rayleigh={10}
-                />
-                <ambientLight args={['#272730', 0.2]} />
-                <pointLight
-                    args={['#272730', 0.3]}
-                    position={[0, 15, 8]}
-                />
-            </group>
         )
     }
     else if (weatherSnow && sunPhase === 'night') {
