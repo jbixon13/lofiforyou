@@ -57,11 +57,13 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                 <Sky
                     inclination={0.50}
                     azimuth={0.25}
+                    turbidity={8}
+                    rayleigh={2}
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['pink', 0.3]} />
                 <pointLight
                     castShadow
-                    args={['white', 0.5]}
+                    args={['hotpink', 0.3]}
                     position={[0, 15, -8]}
                 />
             </group>
@@ -75,9 +77,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     inclination={0.49}
                     azimuth={0.25}                
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['#4e5484', 0.2]} />
                 <pointLight
-                    args={['white', 0.5]}
+                    args={['#4e5484', 0.3]}
                     position={[0, 15, -8]}
                 />
             </group>
@@ -112,13 +114,13 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                 <Sky 
                     inclination={1}
                     azimuth={0.25}
+                    rayleigh={0} 
                     turbidity={8}
-                    rayleigh={6} 
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['white', 0.3]} />
                 <pointLight
                     castShadow
-                    args={['white', 0.5]}
+                    args={['white', 0.3]}
                     position={[0, 15, -8]}
                 />
             </group>
@@ -129,15 +131,16 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <group>
                 <Sky 
-                    inclination={1}
+                    inclination={0.53}
                     azimuth={0.25}
                     rayleigh={0}
-                    turbidity={0.6}
+                    turbidity={8}
+                    mieDirectionalG={0.5}
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['#4e5484', 0.3]} />
                 <pointLight
                     castShadow
-                    args={['white', 0.5]}
+                    args={['#4e5484', 0.3]}
                     position={[0, 15, -8]}
                 />
             </group>
@@ -195,10 +198,10 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     rayleigh={0}
                     turbidity={0.9}
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['white', 0.3]} />
                 <pointLight
                     castShadow
-                    args={['white', 0.5]}
+                    args={['white', 0.3]}
                     position={[0, 15, -8]}
                 />
             </group>
@@ -209,16 +212,17 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <group>
                 <Sky 
-                    inclination={0.50}
+                    inclination={0.53}
                     azimuth={0.25}
                     rayleigh={0}
                     turbidity={0.6}
+                    mieDirectionalG={0.5}
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['#4e5484', 0.3]} />
                 <pointLight
                     castShadow
-                    args={['white', 0.5]}
-                    position={[0, 10, -8]}
+                    args={['#4e5484', 0.3]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
@@ -228,16 +232,14 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <group>
                 <Sky 
-                    inclination={0.49}
+                    inclination={0.48}
                     azimuth={0.25}
-                    rayleigh={0}
-                    turbidity={0.4}
+                    rayleigh={0.4}
                 />
-                <ambientLight args={['white', 0.5]} />
+                <ambientLight args={['#4e5484', 0.2]} />
                 <pointLight
-                    castShadow
-                    args={['white', 0.5]}
-                    position={[0, 15, 8]}
+                    args={['#4e5484', 0.3]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
@@ -248,7 +250,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Stars />
                 <Sky 
-                    rayleigh={10}
+                    rayleigh={6}
                 />
                 <ambientLight args={['#272730', 0.2]} />
                 <pointLight
@@ -300,12 +302,12 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Stars />
                 <Sky 
-                    rayleigh={10}
+                    rayleigh={0}
                 />
                 <ambientLight args={['#272730', 0.2]} />
                 <pointLight
                     args={['#272730', 0.3]}
-                    position={[0, 15, 8]}
+                    position={[0, 15, -8]}
                 />
             </group>
         )
