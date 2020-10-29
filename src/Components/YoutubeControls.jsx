@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Youtube from 'react-youtube'
 
-function YoutubeControls() {
+function YoutubeControls({getLocation}) {
     const [player, setPlayer] = useState(null);
 
     const onReady = (event) => {
@@ -19,6 +19,7 @@ function YoutubeControls() {
     return(
         <div className='youtube-controls'>
             <Youtube videoId='5qap5aO4i9A' onReady={onReady}/>
+            <button onClick={getLocation}>Create Scene</button>
             <button onClick={onPlayVideo}>Play</button>
             <button onClick={onPauseVideo}>Pause</button>
         </div>

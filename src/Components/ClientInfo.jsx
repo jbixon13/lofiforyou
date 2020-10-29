@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ClientInfo({time, isDay, sunPhase, sunPosition, lat, lng, sunTimes, weather}) {
+function ClientInfo({time, isDay, sunPhase, lat, lng, sunTimes, weather}) {
     return(
         <div className='client-info'>
             <h4>Debugging:</h4>

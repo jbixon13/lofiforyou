@@ -16,7 +16,6 @@ function App() {
 
   // get sun calculations based on date & location
   const sunTimes = SunCalc.getTimes(time, lat, lng);
-  const sunPosition = SunCalc.getPosition(time, lat, lng);
 
   // get local time of client on set interval (every 10 minutes)
   useEffect(() => {
@@ -54,19 +53,19 @@ function App() {
   }, [time, sunTimes]);
 
   // get location of client to determine local sun calculations & weather
-  useEffect(() => {
-    if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          setLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          });
-        }, 
-        (err) => {
-          console.log('Error getting location');
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
         });
+      },
+      (err) => {
+        console.log('Error getting location');
+      });
     }
-  }, []);
+  }
 
   // get current weather of client through API call to weatherapi.com
   useEffect(() => {
@@ -86,8 +85,8 @@ function App() {
     <div>
       <h1>Lofi for You</h1>
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
-      <YoutubeControls />
-      <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} sunPosition={sunPosition} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
+      <YoutubeControls getLocation={getLocation}/>
+      <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
       <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
     </div>
   );
