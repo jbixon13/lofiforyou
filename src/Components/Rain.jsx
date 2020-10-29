@@ -2,15 +2,15 @@ import React, { useRef, useMemo } from 'react'
 import { useFrame } from 'react-three-fiber'
 import { shaderMaterial } from '@react-three/drei'
   
-const Rain = ({ rainCount }) => {
+const Rain = ({ pointCount, pointSpeed }) => {
 
     const [positions, velocities, accelerations] = useMemo(() => {
         // set initial vertex variables for use in shaders
-        const setInitialPositions = (rainCount) => {
+        const setInitialPositions = (pointCount) => {
             const initialPositions = [];
             const initialVelocities = [];
             const initialAccelerations = [];
-            for (let i = 0; i < rainCount; i++) {
+            for (let i = 0; i < pointCount; i++) {
               initialPositions.push(Math.random() * 6);
               initialPositions.push(Math.random() * 15);
               initialPositions.push(-15 + Math.random() * 30);
@@ -18,7 +18,7 @@ const Rain = ({ rainCount }) => {
               initialVelocities.push(-1);
               initialVelocities.push(0);
               initialAccelerations.push(0);
-              initialAccelerations.push(10.8);
+              initialAccelerations.push(pointSpeed);
               initialAccelerations.push(0);
             }
             return [initialPositions, initialVelocities, initialAccelerations];
@@ -29,14 +29,14 @@ const Rain = ({ rainCount }) => {
             initialPositions,
             initialVelocities,
             initialAccelerations
-        ] = setInitialPositions(rainCount);
+        ] = setInitialPositions(pointCount);
 
         const positions = new Float32Array(initialPositions);
         const velocities = new Float32Array(initialVelocities);
         const accelerations = new Float32Array(initialAccelerations);
 
         return [positions, velocities, accelerations];
-    }, [rainCount]);
+    }, [pointCount, pointSpeed]);
 
     const uniforms = useMemo(() => ({ time: { value: 1.0 } }), []);
 
