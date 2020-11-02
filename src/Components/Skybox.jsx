@@ -70,7 +70,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         )
     }
     else if (weatherClear && sunPhase === 'sunset') {
-        console.log('clear golden hour / sunset')
+        console.log('clear sunset')
         return(
             <group>
                 <Sky
