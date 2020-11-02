@@ -17,11 +17,11 @@ function App() {
   // get sun calculations based on date & location
   const sunTimes = SunCalc.getTimes(time, lat, lng);
 
-  // get local time of client on set interval (every 10 minutes)
+  // get local time of client on set interval (every 5 minutes)
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date());
-    }, 600000);
+    }, 300000);
     return () => clearInterval(interval);
   }, [time]);
 
@@ -40,8 +40,11 @@ function App() {
     if (time > sunTimes.sunrise && time < sunTimes.sunriseEnd) {
       setSunPhase('sunrise')
     }
-    else if (time > sunTimes.sunriseEnd && time < sunTimes.sunsetStart) {
+    else if (time > sunTimes.sunriseEnd && time < sunTimes.goldenHour) {
       setSunPhase('day')
+    }
+    else if (time > sunTimes.goldenHour && time < sunTimes.goldenHourEnd) {
+      setSunPhase('golden hour')
     }
     else if (time > sunTimes.sunsetStart && time < sunTimes.sunset) {
       setSunPhase('sunset')
@@ -87,7 +90,7 @@ function App() {
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
       <YoutubeControls getLocation={getLocation}/>
       <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
+      <LofiCanvas isDay={isDay} sunPhase={'golden hour'} weather={weather} />
     </div>
   );
 }

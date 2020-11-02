@@ -11,7 +11,8 @@ function ClientInfo({time, isDay, sunPhase, lat, lng, sunTimes, weather}) {
             <p><strong>Phases of day:</strong></p>
             <ul>
                 <li><strong>Sunrise:</strong> {sunTimes.sunrise.toLocaleTimeString()} - {sunTimes.sunriseEnd.toLocaleTimeString()}</li>
-                <li><strong>Daytime:</strong> {sunTimes.sunriseEnd.toLocaleTimeString()} - {sunTimes.sunsetStart.toLocaleTimeString()}</li>
+                <li><strong>Daytime:</strong> {sunTimes.sunriseEnd.toLocaleTimeString()} - {sunTimes.goldenHour.toLocaleTimeString()}</li>
+                <li><strong>Golden Hour:</strong> {sunTimes.goldenHour.toLocaleTimeString()} - {sunTimes.sunsetStart.toLocaleTimeString()}</li>
                 <li><strong>Sunset:</strong> {sunTimes.sunsetStart.toLocaleTimeString()} - {sunTimes.sunset.toLocaleTimeString()}</li>
                 <li><strong>Dusk:</strong> {sunTimes.sunset.toLocaleTimeString()} - {sunTimes.dusk.toLocaleTimeString()}</li>
                 <li><strong>Night: </strong> {sunTimes.dusk.toLocaleTimeString()} - {sunTimes.sunrise.toLocaleTimeString()}</li>

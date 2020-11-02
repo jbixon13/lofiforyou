@@ -50,8 +50,27 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             </group>
         )
     }
+    else if (weatherClear && sunPhase === 'golden hour') {
+        console.log('clear golden hour')
+        return(
+            <group>
+                <Sky
+                    inclination={0.50}
+                    azimuth={0.25}
+                    turbidity={8}
+                    rayleigh={2}
+                />
+                <ambientLight args={['pink', 0.3]} />
+                <pointLight
+                    castShadow
+                    args={['hotpink', 0.3]}
+                    position={[0, 15, -8]}
+                />
+            </group>
+        )
+    }
     else if (weatherClear && sunPhase === 'sunset') {
-        console.log('clear sunset')
+        console.log('clear golden hour / sunset')
         return(
             <group>
                 <Sky
@@ -126,8 +145,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             </group>
         )
     }
-    else if (weatherCloudy && sunPhase === 'sunset') {
-        console.log('cloudy sunset')
+    else if (weatherCloudy && sunPhase === ('golden hour' || 'sunset')) {
+        console.log('cloudy golden hour / sunset')
         return(
             <group>
                 <Sky 
@@ -207,8 +226,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             </group>
         )
     }
-    else if (weatherRain && sunPhase === 'sunset') {
-        console.log('rainy sunset')
+    else if (weatherRain && sunPhase === ('golden hour' || 'sunset')) {
+        console.log('rainy golden hour / sunset')
         return(
             <group>
                 <Sky 
@@ -278,8 +297,8 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             />
         )
     }
-    else if (weatherSnow && sunPhase === 'sunset') {
-        console.log('snowy sunset')
+    else if (weatherSnow && sunPhase === ('golden hour' || 'sunset')) {
+        console.log('snowy golden hour / sunset')
         return(
             <Sky
                 inclination={0.49}
