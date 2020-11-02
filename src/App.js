@@ -90,7 +90,7 @@ function App() {
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
       <YoutubeControls getLocation={getLocation}/>
       <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas isDay={isDay} sunPhase={'golden hour'} weather={weather} />
+      <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
     </div>
   );
 }
