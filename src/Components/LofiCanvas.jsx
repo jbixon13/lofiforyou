@@ -8,8 +8,8 @@ import Weather from './Weather'
 
 const Plane = () => (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
-        <planeBufferGeometry attach='geometry' args={[250, 100]} />
-        <meshPhysicalMaterial attach='material' color='lightgreen' />
+        <planeBufferGeometry args={[250, 100]} />
+        <meshPhysicalMaterial color='lightgreen' />
     </mesh>
 )
 

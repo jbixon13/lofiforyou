@@ -16,16 +16,16 @@ const Cloud = ({ cloudHeight, cloudPosition }) => {
     return(
         <group ref={group}>
             <mesh castShadow recieveShadow position={[cloudPosition, cloudHeight, 0]}>
-                <icosahedronBufferGeometry attach='geometry' args={[2, 2]}/>
-                <MeshDistortMaterial attach='material' color='white' speed={0.5} />
+                <icosahedronBufferGeometry args={[2, 2]}/>
+                <MeshDistortMaterial color='white' speed={0.5} />
             </mesh>
             <mesh castShadow recieveShadow position={[cloudPosition - 2, cloudHeight, 0]}>
-                <icosahedronBufferGeometry attach='geometry' args={[1.5, 2]}/>
-                <MeshDistortMaterial attach='material' color='white' speed={0.5} />
+                <icosahedronBufferGeometry args={[1.5, 2]}/>
+                <MeshDistortMaterial color='white' speed={0.5} />
             </mesh>
             <mesh castShadow recieveShadow position={[cloudPosition + 2, cloudHeight, 0]}>
-                <icosahedronBufferGeometry attach='geometry' args={[1.5, 2]}/>
-                <MeshDistortMaterial attach='material' color='white' speed={0.5} />
+                <icosahedronBufferGeometry args={[1.5, 2]}/>
+                <MeshDistortMaterial color='white' speed={0.5} />
             </mesh>
         </group>
     )
