@@ -13,6 +13,7 @@ function App() {
   const [sunPhase, setSunPhase] = useState('day');
   const [{lat, lng}, setLocation] = useState({lat: 0, lng: 0});
   const [weather, setWeather] = useState([]);
+  const [renderScene, setRenderScene] = useState(false);
 
   // get sun calculations based on date & location
   const sunTimes = SunCalc.getTimes(time, lat, lng);
@@ -63,6 +64,8 @@ function App() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         });
+
+        setRenderScene(true);
       },
       (err) => {
         console.log('Error getting location');
@@ -84,13 +87,23 @@ function App() {
     fetchData();
   }, [lat, lng, time]);
 
-  return (
+  if (renderScene) {
+    return (
+      <div>
+        <h1>Lofi for You</h1>
+        <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
+        <YoutubeControls getLocation={getLocation}/>
+        <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
+        <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
+    </div>      
+    );
+  }
+
+  else return (
     <div>
       <h1>Lofi for You</h1>
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
       <YoutubeControls getLocation={getLocation}/>
-      <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-      <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
     </div>
   );
 }
