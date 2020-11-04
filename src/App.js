@@ -44,7 +44,7 @@ function App() {
     else if (time > sunTimes.sunriseEnd && time < sunTimes.goldenHour) {
       setSunPhase('day')
     }
-    else if (time > sunTimes.goldenHour && time < sunTimes.goldenHourEnd) {
+    else if (time > sunTimes.goldenHour && time < sunTimes.sunsetStart) {
       setSunPhase('golden hour')
     }
     else if (time > sunTimes.sunsetStart && time < sunTimes.sunset) {
