@@ -195,7 +195,7 @@ export default function Forest(props) {
       <group position={[4.08, 5.9, -1.01]} rotation={[-2.5, 1.47, 2.33]} />
       <group position={[1.12, 11.42, -3.44]} rotation={[1.76, 1.19, -2.3]} />
       <group position={[-6.42, -0.01, 4.36]} scale={[9.74, 9.74, 9.74]}>
-        <mesh material={materials['Material.005']} geometry={nodes.Plane_0.geometry} />
+        <mesh receiveShadow material={materials['Material.005']} geometry={nodes.Plane_0.geometry} />
       </group>
       <group position={[2.46, 0.34, 8.47]} rotation={[2.32, -1.06, 1.21]} scale={[0.83, 0.83, 0.83]}>
         <mesh material={materials['Material.008']} geometry={nodes.Plane002_0.geometry} />
