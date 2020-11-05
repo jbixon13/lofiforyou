@@ -25,7 +25,7 @@ function LofiCanvas({ isDay, sunPhase, weather }) {
                 <Forest position={[-4, 0, 4]} rotation={[0, Math.PI / 2, 0]} />
             </Suspense>
             {/* <Grass /> */}
-            <Skybox isDay={isDay} sunPhase={'night'} weather={weather} />
+            <Skybox isDay={isDay} sunPhase={SunPhase} weather={weather} />
             {/* <gridHelper args={[30, 30, 30]} /> */}
         </Canvas>
     )
