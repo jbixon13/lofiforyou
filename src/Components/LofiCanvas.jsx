@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Canvas } from 'react-three-fiber'
 import { OrbitControls } from '@react-three/drei'
 import Skybox from './Skybox'
 import Weather from './Weather'
 // import Fog from './Fog'
 // import Grass from './Grass'
+import Forest from './Forest'
 
-const Plane = () => (
-    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
-        <planeBufferGeometry args={[250, 100]} />
-        <meshPhysicalMaterial color='lightgreen' />
-    </mesh>
-)
+// const Plane = () => (
+//     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
+//         <planeBufferGeometry args={[250, 100]} />
+//         <meshPhysicalMaterial color='lightgreen' />
+//     </mesh>
+// )
 
 function LofiCanvas({ isDay, sunPhase, weather }) {
     return(
@@ -19,7 +20,10 @@ function LofiCanvas({ isDay, sunPhase, weather }) {
             <OrbitControls autoRotate={false} target={[0, 3, 0]} />
             <Weather weather={weather} />
             {/* <Fog isDay={isDay} /> */}
-            <Plane />
+            {/* <Plane /> */}
+            <Suspense fallback={null} >
+                <Forest />
+            </Suspense>
             {/* <Grass /> */}
             <Skybox isDay={isDay} sunPhase={sunPhase} weather={weather} />
             <gridHelper args={[30, 30, 30]} />
