@@ -24,10 +24,10 @@ function LofiCanvas({ isDay, sunPhase, weather }) {
             {/* <Plane /> */}
             <Suspense fallback={null} >
                 {/* <ForestSimple position={[-6, 0, 4]} rotation={[0, Math.PI / 2, 0]} /> */}
-                <Forest position={[-6, 0, 4]} rotation={[0, Math.PI / 2, 0]} />
+                <Forest position={[-3, 0, 4]} rotation={[0, Math.PI / 2, 0]} />
             </Suspense>
             {/* <Grass /> */}
-            <Skybox isDay={isDay} sunPhase={sunPhase} weather={weather} />
+            <Skybox isDay={isDay} sunPhase={'dusk'} weather={weather} />
             {/* <gridHelper args={[30, 30, 30]} /> */}
         </Canvas>
     )

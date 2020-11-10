@@ -22,7 +22,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky
                     inclination={0.49}
-                    azimuth={0.25}
+                    azimuth={0.27}
                 />
                 <ambientLight args={['white', 0.5]} />
                 <pointLight
@@ -56,7 +56,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky
                     inclination={0.50}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     turbidity={8}
                     rayleigh={2}
                 />
@@ -75,7 +75,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky
                     inclination={0.50}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     turbidity={8}
                     rayleigh={2}
                 />
@@ -94,7 +94,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky
                     inclination={0.49}
-                    azimuth={0.25}                
+                    azimuth={0.27}                
                 />
                 <ambientLight args={['#4e5484', 0.2]} />
                 <pointLight
@@ -122,7 +122,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <Sky
                 inclination={0.49}
-                azimuth={0.25}
+                azimuth={0.27}
             />
         )
     }
@@ -132,7 +132,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={1}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     rayleigh={0} 
                     turbidity={8}
                 />
@@ -151,7 +151,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={0.53}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     rayleigh={0}
                     turbidity={8}
                     mieDirectionalG={0.5}
@@ -171,7 +171,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={0.48}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     rayleigh={0.4}
                 />
                 <ambientLight args={['#4e5484', 0.2]} />
@@ -203,7 +203,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <Sky
                 inclination={0.49}
-                azimuth={0.25}
+                azimuth={0.27}
             />
         )
     }
@@ -213,7 +213,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={1}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     rayleigh={0}
                     turbidity={0.9}
                 />
@@ -232,7 +232,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={0.53}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     rayleigh={0}
                     turbidity={0.6}
                     mieDirectionalG={0.5}
@@ -252,7 +252,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={0.48}
-                    azimuth={0.25}
+                    azimuth={0.27}
                     rayleigh={0.4}
                 />
                 <ambientLight args={['#4e5484', 0.2]} />
@@ -284,7 +284,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <Sky
                 inclination={0.49}
-                azimuth={0.25}
+                azimuth={0.27}
             />
         )
     }
@@ -302,7 +302,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <Sky
                 inclination={0.49}
-                azimuth={0.25}
+                azimuth={0.27}
             />
         )
     }
@@ -311,7 +311,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
         return(
             <Sky
                 inclination={0.50}
-                azimuth={0.25}                
+                azimuth={0.27}                
             />
         )
     }
