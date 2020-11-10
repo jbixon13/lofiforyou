@@ -6,6 +6,7 @@ import Weather from './Weather'
 // import Fog from './Fog'
 // import Grass from './Grass'
 import Forest from './Forest'
+// import ForestSimple from './ForestSimple'
 
 // const Plane = () => (
 //     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
@@ -22,7 +23,8 @@ function LofiCanvas({ isDay, sunPhase, weather }) {
             {/* <Fog isDay={isDay} /> */}
             {/* <Plane /> */}
             <Suspense fallback={null} >
-                <Forest position={[-4, 0, 4]} rotation={[0, Math.PI / 2, 0]} />
+                {/* <ForestSimple position={[-6, 0, 4]} rotation={[0, Math.PI / 2, 0]} /> */}
+                <Forest position={[-6, 0, 4]} rotation={[0, Math.PI / 2, 0]} />
             </Suspense>
             {/* <Grass /> */}
             <Skybox isDay={isDay} sunPhase={sunPhase} weather={weather} />
