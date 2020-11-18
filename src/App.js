@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import YoutubeControls from './Components/YoutubeControls'
 import ClientInfo from './Components/ClientInfo'
-import LofiCanvas from './Components/LofiCanvas'
+import SceneCanvas from './Components/SceneCanvas'
 
 var SunCalc = require('suncalc');
 
@@ -94,7 +94,7 @@ function App() {
         <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
         <YoutubeControls getLocation={getLocation}/>
         <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
-        <LofiCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
+        <SceneCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
     </div>      
     );
   }
