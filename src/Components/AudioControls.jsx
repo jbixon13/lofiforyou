@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Youtube from 'react-youtube'
 
-function YoutubeControls({getLocation}) {
+function AudioControls({getLocation}) {
     const [player, setPlayer] = useState(null);
 
     const onReady = (event) => {
@@ -26,4 +26,4 @@ function YoutubeControls({getLocation}) {
     )
 }
 
-export default YoutubeControls
+export default AudioControls

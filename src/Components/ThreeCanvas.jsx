@@ -24,7 +24,6 @@ function ThreeCanvas({ isDay, sunPhase, weather }) {
                 maxPolarAngle={Math.PI / 2}
                 minAzimuthAngle={-Math.PI / 4}
                 maxAzimuthAngle={Math.PI / 4}
-                // maxDistance={-10}
                 maxDistance={15}
                 maxZoom={10}
             />

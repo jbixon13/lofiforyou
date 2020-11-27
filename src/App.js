@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import YoutubeControls from './Components/YoutubeControls'
+import AudioControls from './Components/AudioControls'
 import ClientInfo from './Components/ClientInfo'
 import ThreeCanvas from './Components/ThreeCanvas'
 
@@ -92,7 +92,7 @@ function App() {
       <div>
         <h1>Lofi for You</h1>
         <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
-        <YoutubeControls getLocation={getLocation}/>
+        <AudioControls getLocation={getLocation}/>
         <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
         <ThreeCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
     </div>      
@@ -103,7 +103,7 @@ function App() {
     <div>
       <h1>Lofi for You</h1>
       <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
-      <YoutubeControls getLocation={getLocation}/>
+      <AudioControls getLocation={getLocation}/>
     </div>
   );
 }
