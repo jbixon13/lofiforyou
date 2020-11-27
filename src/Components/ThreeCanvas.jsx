@@ -17,7 +17,17 @@ import Forest from './Forest'
 function ThreeCanvas({ isDay, sunPhase, weather }) {
     return(
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 2, 15] }}>
-            <OrbitControls autoRotate={false} target={[0, 3, 0]} />
+            <OrbitControls 
+                autoRotate={false}
+                target={[0, 3, 0]}
+                minPolarAngle={Math.PI / 3}
+                maxPolarAngle={Math.PI / 2}
+                minAzimuthAngle={-Math.PI / 4}
+                maxAzimuthAngle={Math.PI / 4}
+                // maxDistance={-10}
+                maxDistance={15}
+                maxZoom={10}
+            />
             <Weather weather={weather} />
             {/* <Fog isDay={isDay} /> */}
             {/* <Plane /> */}
