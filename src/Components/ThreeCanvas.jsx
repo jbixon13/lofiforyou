@@ -14,7 +14,7 @@ import Forest from './Forest'
 //     </mesh>
 // )
 
-function SceneCanvas({ isDay, sunPhase, weather }) {
+function ThreeCanvas({ isDay, sunPhase, weather }) {
     return(
         <Canvas className={isDay ? 'day' : 'night'} colorManagement shadowMap camera={{ position: [0, 2, 15] }}>
             <OrbitControls autoRotate={false} target={[0, 3, 0]} />
@@ -32,4 +32,4 @@ function SceneCanvas({ isDay, sunPhase, weather }) {
     )
 }
 
-export default SceneCanvas
+export default ThreeCanvas
