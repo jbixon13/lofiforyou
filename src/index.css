@@ -19,20 +19,28 @@ h3 {
   font-weight: 600;
 }
 
-iframe {
-  width: 0;
-  height: 0;
-}
-
-.youtube-controls {
-  display: flex;
-  justify-content: center;
+.audio-controls {
+  display: grid;
   margin-bottom: 1em;
+  column-gap: 1em;
+  grid-template-columns: 50% 50%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
-.youtube-controls button {
-  margin-left: 1em;
-  margin-right: 1em;
+.audio-controls button {
+  margin-bottom: 1em;
+  grid-row: 1;
+}
+
+.audio-controls input {
+  text-align: center;
+  grid-row: 2;
+  grid-column: 1 / span 2;
+}
+
+.audio-controls .audio-player {
+  grid-row: 3;
 }
 
 .client-info {

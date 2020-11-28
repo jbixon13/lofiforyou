@@ -1,27 +1,29 @@
 import React, { useState } from 'react'
-import Youtube from 'react-youtube'
+import ReactPlayer from 'react-player/youtube'
 
 function AudioControls({getLocation}) {
-    const [player, setPlayer] = useState(null);
+    const [url, setUrl] = useState('https://www.youtube.com/watch?v=5qap5aO4i9A');
+    const [playing, setPlaying] = useState(false);
 
-    const onReady = (event) => {
-        setPlayer(event.target);
-      };
-
-    const onPlayVideo = () => {
-        player.playVideo();
+    const playHandler = () => {
+        setPlaying(!playing);
     }
 
-    const onPauseVideo = () => {
-        player.pauseVideo();
+    const urlHandler = (event) => {
+        setUrl(event.target.value)
     }
 
     return(
-        <div className='youtube-controls'>
-            <Youtube videoId='5qap5aO4i9A' onReady={onReady}/>
+        <div className='audio-controls'>
+            <ReactPlayer className='audio-player'
+                url={url} 
+                playing={playing}
+                width={0}
+                height={0}
+            />
             <button onClick={getLocation}>Create Scene</button>
-            <button onClick={onPlayVideo}>Play</button>
-            <button onClick={onPauseVideo}>Pause</button>
+            <button onClick={playHandler}>Play/Pause</button>
+            <input onChange={urlHandler} type='text' placeholder='Paste any Youtube video or playlist url here' />
         </div>
     )
 }
