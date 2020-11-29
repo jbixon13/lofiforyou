@@ -22,7 +22,7 @@ function AudioControls({getLocation}) {
                 height={0}
             />
             <button onClick={getLocation}>Create Scene</button>
-            <button onClick={playHandler}>Play/Pause</button>
+            <button onClick={playHandler}>{playing ? 'Pause' : 'Play'}</button>
             <input onChange={urlHandler} type='text' placeholder='Paste any Youtube video or playlist url here' />
         </div>
     )
