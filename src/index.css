@@ -19,20 +19,38 @@ h3 {
   font-weight: 600;
 }
 
-iframe {
-  width: 0;
-  height: 0;
-}
-
-.youtube-controls {
-  display: flex;
+.audio-controls {
+  display: grid;
   justify-content: center;
   margin-bottom: 1em;
+  column-gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.youtube-controls button {
-  margin-left: 1em;
-  margin-right: 1em;
+.audio-controls button {
+  margin-bottom: 1em;
+  grid-row: 1;
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+
+}
+
+.audio-controls input {
+  text-align: center;
+  grid-row: 2;
+  grid-column: 1 / span 3;
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .client-info {
@@ -64,5 +82,19 @@ body .night {
   body {
     background-color:  #272730;
     color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  .audio-controls {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+@media (min-width: 1080px) {
+  .audio-controls {
+    margin-left: 30%;
+    margin-right: 30%;
   }
 }
