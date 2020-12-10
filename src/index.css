@@ -50,6 +50,7 @@ h3 {
   border-radius: .25rem;
   font-size: 0.8rem;
   line-height: 1.5;
+  background-color: pink;
 }
 
 .client-info {
