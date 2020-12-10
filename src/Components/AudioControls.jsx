@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactPlayer from 'react-player/youtube'
 
-function AudioControls({getLocation}) {
+function AudioControls({ getLocation, renderScene }) {
     const [url, setUrl] = useState('https://www.youtube.com/watch?v=5qap5aO4i9A');
     const [playing, setPlaying] = useState(false);
     const [looping, setLooping] = useState(false);
@@ -27,7 +27,7 @@ function AudioControls({getLocation}) {
                 width={0}
                 height={0}
             />
-            <button onClick={getLocation}>Create Scene</button>
+            <button onClick={getLocation}>{renderScene ? 'Scene Created' : 'Create Scene'}</button>
             <button onClick={playHandler}>{playing ? 'Pause' : 'Play'}</button>
             <button onClick={loopHandler}>{looping ? 'Looping' : 'Not Looping'}</button>
             <input onChange={urlHandler} type='text' placeholder='Paste any Youtube video or playlist url here' />
