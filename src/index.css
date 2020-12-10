@@ -37,8 +37,7 @@ h3 {
   padding: .375rem .75rem;
   border-radius: .25rem;
   font-size: 1rem;
-  line-height: 1.5;
-
+  line-height: 1.2;
 }
 
 .audio-controls input {
@@ -49,7 +48,7 @@ h3 {
   border: 1px solid transparent;
   padding: .375rem .75rem;
   border-radius: .25rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.5;
 }
 
@@ -62,6 +61,7 @@ Canvas {
   width: 100%;
   margin: 0;
   padding: 0;
+  touch-action: pan-y;
 }
 
 div .day {
@@ -89,6 +89,14 @@ body .night {
   .audio-controls {
     margin-left: 20%;
     margin-right: 20%;
+  }
+
+  .audio-controls button {
+    line-height: 1.5;
+  }
+
+  .audio-controls input {
+    font-size: 1rem;
   }
 }
 
