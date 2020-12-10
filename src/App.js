@@ -102,7 +102,7 @@ function App() {
   else return (
     <div>
       <h1>Lofi for You</h1>
-      <h3>Watch the day pass by as you relax to your favorite lofi music</h3>
+      <h3>Watch the day pass by as you relax to your favorite music</h3>
       <AudioControls getLocation={getLocation}/>
     </div>
   );
