@@ -40,6 +40,11 @@ h3 {
   line-height: 1.2;
 }
 
+.audio-controls button:hover {
+  background-color: pink;
+  transition: 0.3s;
+}
+
 .audio-controls input {
   text-align: center;
   grid-row: 2;
@@ -51,6 +56,11 @@ h3 {
   font-size: 0.8rem;
   line-height: 1.5;
   background-color: #F0F0F0;
+}
+
+.audio-controls input:hover {
+  background-color: pink;
+  transition: 0.3s;
 }
 
 .client-info {
