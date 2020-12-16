@@ -294,7 +294,7 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
             <group>
                 <Sky 
                     inclination={1}
-                    azimuth={0.75}
+                    azimuth={0.25}
                 />
                 <ambientLight args={['white', 0.3]} />
                 <pointLight
