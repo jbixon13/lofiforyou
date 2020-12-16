@@ -30,13 +30,31 @@ const Weather = ({ weather }) => {
         'torrential rain shower',
         'moderate or heavy rain with thunder'
     ];
-    const weatherSnowList = ['snow'];
+    const weatherSnowLightList = [
+        'patchy light snow',
+        'light snow',
+        'light snow showers',
+        'patchy light snow with thunder'
+
+    ];
+    const weatherSnowList = [
+        'patchy moderate snow',
+        'moderate snow',
+        'moderate or heavy snow showers',
+        'moderate or heavy snow with thunder'
+    ];
+    const weatherSnowHeavyList = [
+        'patchy heavy snow',
+        'heavy snow'
+    ];
 
     // boolean indicators of the weather
     const weatherRainLight = weatherRainLightList.some(el => weatherString.includes(el));
     const weatherRain = weatherRainList.some(el => weatherString.includes(el));
     const weatherRainHeavy = weatherRainHeavyList.some(el => weatherString.includes(el));
+    const weatherSnowLight = weatherSnowLightList.some(el => weatherString.includes(el));
     const weatherSnow = weatherSnowList.some(el => weatherString.includes(el));
+    const weatherSnowHeavy = weatherSnowHeavyList.some(el => weatherString.includes(el));
 
     // functions to randomly assign cloud position
     const heightRand = (min, max) => {
@@ -77,11 +95,29 @@ const Weather = ({ weather }) => {
         )
     }
 
-    else if (weatherSnow) {
+    else if (weatherSnowLight) {
         return(
             <group>
                 <Cloud cloudHeight={cloudHeight} cloudPosition={cloudPosition} />
                 <Snow pointCount={500} pointSpeed={2.8} />
+            </group>
+        )
+    }
+
+    else if (weatherSnow) {
+        return(
+            <group>
+                <Cloud cloudHeight={cloudHeight} cloudPosition={cloudPosition} />
+                <Snow pointCount={600} pointSpeed={5.8} />
+            </group>
+        )
+    }
+
+    else if (weatherSnowHeavy) {
+        return(
+            <group>
+                <Cloud cloudHeight={cloudHeight} cloudPosition={cloudPosition} />
+                <Snow pointCount={700} pointSpeed={7.8} />
             </group>
         )
     }

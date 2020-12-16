@@ -328,10 +328,18 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
     else if (weatherSnow && sunPhase === 'dusk') {
         console.log('snowy dusk')
         return(
-            <Sky
-                inclination={0.50}
-                azimuth={0.27}                
-            />
+            <group>
+                <Sky 
+                    inclination={0.48}
+                    azimuth={0.27}
+                    rayleigh={0.4}
+                />
+                <ambientLight args={['#4e5484', 0.2]} />
+                <pointLight
+                    args={['#4e5484', 0.3]}
+                    position={[0, 15, -8]}
+                />
+            </group>
         )
     }
     else if (weatherSnow && sunPhase === 'night') {
