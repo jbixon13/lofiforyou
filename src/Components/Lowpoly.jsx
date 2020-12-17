@@ -10,9 +10,9 @@ export default function Lowpoly(props) {
   const { nodes, materials } = useGLTF('/lowpoly.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh receiveShadow 
+      <mesh receiveShadow
         material={materials.Material}
-        geometry={nodes.Scene_1.geometry}
+        geometry={nodes.Rocks.geometry}
         position={[4.49, 0.5, 0]}
         rotation={[Math.PI, -1.2, Math.PI]}
         scale={[1.95, 1.95, 1.95]}
