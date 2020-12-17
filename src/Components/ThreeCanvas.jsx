@@ -4,15 +4,7 @@ import { OrbitControls } from '@react-three/drei'
 import Skybox from './Skybox'
 import Weather from './Weather'
 // import Fog from './Fog'
-// import Forest from './Forest'
 import Lowpoly from './Lowpoly'
-
-// const Plane = () => (
-//     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
-//         <planeBufferGeometry args={[250, 100]} />
-//         <meshPhysicalMaterial color='lightgreen' />
-//     </mesh>
-// )
 
 function ThreeCanvas({ isDay, sunPhase, weather }) {
     return(
@@ -29,9 +21,7 @@ function ThreeCanvas({ isDay, sunPhase, weather }) {
             />
             <Weather weather={weather} />
             {/* <Fog isDay={isDay} /> */}
-            {/* <Plane /> */}
             <Suspense fallback={null} >
-                {/* <Forest position={[-3, 0, 4]} rotation={[0, Math.PI / 2, 0]} /> */}
                 <Lowpoly position={[1, 0, 8]}/>
             </Suspense>
             <Skybox isDay={isDay} sunPhase={sunPhase} weather={weather} />
