@@ -29,6 +29,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['white', 0.5]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -46,6 +49,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['white', 0.5]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -65,6 +71,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['hotpink', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -84,6 +93,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['hotpink', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -141,6 +153,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['white', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -161,6 +176,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['#4e5484', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -222,6 +240,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['white', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -242,6 +263,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['#4e5484', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -301,6 +325,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['white', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
@@ -321,6 +348,9 @@ const Skybox = ({ isDay, sunPhase, weather }) => {
                     castShadow
                     args={['#4e5484', 0.3]}
                     position={[0, 15, -8]}
+                    shadow-mapSize-width={1024}
+                    shadow-mapSize-height={1024}
+                    shadow-bias={-0.0001}
                 />
             </group>
         )
