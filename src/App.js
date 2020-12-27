@@ -91,7 +91,7 @@ function App() {
     return (
       <div>
         <h1>Lofi for You</h1>
-        <h3>Watch the day pass by as you relax to your favorite music</h3>
+        <h2>Watch the day pass by as you relax to your favorite music</h2>
         <AudioControls getLocation={getLocation} renderScene={renderScene} />
         <ClientInfo time={time} isDay={isDay} sunPhase={sunPhase} lat={lat} lng={lng} weather={weather} sunTimes={sunTimes} />
         <ThreeCanvas isDay={isDay} sunPhase={sunPhase} weather={weather} />
@@ -102,7 +102,7 @@ function App() {
   else return (
     <div>
       <h1>Lofi for You</h1>
-      <h3>Watch the day pass by as you relax to your favorite music</h3>
+      <h2>Watch the day pass by as you relax to your favorite music</h2>
       <AudioControls getLocation={getLocation}/>
     </div>
   );

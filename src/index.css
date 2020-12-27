@@ -12,11 +12,12 @@ h1 {
   margin-bottom: 0;
 }
 
-h3 {
+h2 {
   margin-top: 0;
   margin-bottom: 1em;
   text-align: center;
   font-weight: 600;
+  font-size: 1.17em;
 }
 
 .audio-controls {
