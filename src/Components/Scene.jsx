@@ -13,8 +13,8 @@ const Scene = ({ isDay, sunPhase, weather }) => {
     const { viewport } = useThree();
 
     useFrame(({ mouse }) => {
-        const x = (mouse.x * viewport.width) / 200;
-        const y = (mouse.y * viewport.height) / 200;
+        const x = (mouse.x * viewport.width) / 500;
+        const y = (mouse.y * viewport.height) / 500;
 
         rotationEuler.set(y, x, 0);
         rotationQuaternion.setFromEuler(rotationEuler);
