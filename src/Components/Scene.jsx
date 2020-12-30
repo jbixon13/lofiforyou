@@ -28,10 +28,6 @@ const Scene = ({ isDay, sunPhase, weather }) => {
                 <OrbitControls 
                     autoRotate={false}
                     target={[0, 3, 0]}
-                    minPolarAngle={Math.PI / 3}
-                    maxPolarAngle={Math.PI / 2}
-                    minAzimuthAngle={-Math.PI / 4}
-                    maxAzimuthAngle={Math.PI / 4}
                     enableZoom={false}
                     enablePan={false}
                     enableRotate={false}
