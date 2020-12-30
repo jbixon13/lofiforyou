@@ -26,8 +26,8 @@ const Scene = ({ isDay, sunPhase, weather }) => {
         <>
             <group ref={group}>
                 <OrbitControls 
-                    autoRotate={false}
                     target={[0, 3, 0]}
+                    autoRotate={false}
                     enableZoom={false}
                     enablePan={false}
                     enableRotate={false}
